@@ -12,6 +12,7 @@ jobs:
             - v1-dependencies-
       - run: npm install
       - run: npm install --save-dev firebase-tools
+      - run: npm install -g @angular/cli
       - save_cache:
           paths:
             - node_modules
