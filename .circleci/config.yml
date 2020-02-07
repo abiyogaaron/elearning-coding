@@ -1,6 +1,9 @@
 version:2
 jobs:
   build:
+    branches:
+    only:
+      - master
     docker:
       - image: 'circleci/node:8'
     working_directory: ~/repo 
@@ -13,7 +16,7 @@ jobs:
       - run: 'npm install'
       - save_cache:
           paths:
-          - node_modules
+            - node_modules
           key: 'v1-dependencies-{{ checksum "package.json" }}'
       - run:
           name: 'Build Project'
