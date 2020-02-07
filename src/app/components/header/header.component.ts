@@ -3,6 +3,7 @@ import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeServ
 import { filter, map } from 'rxjs/operators';
 import { AuthService } from "../../shared/services/auth.service";
 import { User } from "../../shared/services/user";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -12,11 +13,13 @@ import { User } from "../../shared/services/user";
 export class HeaderComponent implements OnInit {
   userMenu = [ { title: 'Signout' } ];
   user: User;
+  userPictureOnly: any;
 
   constructor(
     private sidebarService: NbSidebarService,
     private menuService: NbMenuService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -39,4 +42,7 @@ export class HeaderComponent implements OnInit {
     return false;
   }
 
+  navigateHome(): void{
+    this.router.navigate(['home/dashboad']);
+  }
 }

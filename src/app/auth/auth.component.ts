@@ -22,6 +22,8 @@ export class AuthComponent implements OnInit {
   specializations: Array<string>;
   classes: Array<string>;
   errFirebase: string;
+  signinMsg: any;
+  signupMsg: any;
 
   constructor(
     public authService: AuthService,
