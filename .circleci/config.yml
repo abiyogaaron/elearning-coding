@@ -18,5 +18,5 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: ng build --prod
+      - run: npm run buildprod
       - run: './node_modules/.bin/firebase deploy --only hosting --token=$FIREBASE_TOKEN'
