@@ -1,0 +1,43 @@
+@import '../@theme/themes';
+
+.wrapper-verify{
+  max-width: 480px;
+    margin: auto;
+    &-icon{
+        text-align: center;
+        nb-icon{
+            color: #fff;
+            background-color: nb-theme(primary-color);
+            padding: nb-theme(space-small);
+            font-size: 96px;
+            border-radius: nb-theme(border-circle);
+        }
+    }
+    &-toptext{
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      h5{
+          font-size: 28px;
+          font-weight: bold;
+      }
+      p{
+          font-size: 16px;
+      }
+      .resendEmailBtn{
+        margin-top: nb-theme(space-medium);
+      }
+      .loginText{
+        margin-top: nb-theme(space-medium);
+        font-size: 14px;
+        text-align: center;
+        a{
+            color: nb-theme(primary-color);
+            cursor: pointer;
+            &:hover{
+                color: nb-theme(primary-color-hover);
+            }
+        }
+      }
+  }
+}

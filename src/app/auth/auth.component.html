@@ -1,0 +1,172 @@
+<nb-layout>  
+    <nb-layout-column class="colored-column-basic">
+        <nb-flip-card [showToggleButton]="false" [flipped]="isCardFlipped">
+            <nb-card-front>
+                <nb-card class="card-body">
+                    <nb-card-header>
+                    </nb-card-header>
+                    <nb-card-body>
+                        <div class="wrapper-login">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="wrapper-login-icon">
+                                        <nb-icon icon="lock"></nb-icon>
+                                    </h5>
+                                    <div class="wrapper-login-toptext">
+                                        <h5>Login</h5>
+                                        <p>Hello! Log in with your email</p>
+                                    </div>
+                                    <form [formGroup]="formSignin" (ngSubmit)="signIn(formSignin)">
+                                        <div class="form-group">
+                                            <label for="InputEmailSignin" class="label">Email address</label>
+                                            <input type="email" formControlName="email" name="signinObj.email" [(ngModel)]="signinObj.email" nbInput fullWidth id="InputEmailSignin" placeholder="Email" required>    
+                                            <div class="error" *ngFor="let validation of signinMsg.email">
+                                                <p *ngIf="formSignin.get('email').hasError(validation.type) && (formSignin.get('email').dirty || formSignin.get('email').touched)">
+                                                    {{validation.message}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="InputPasswordSignin" class="label">Password</label>
+                                            <input type="password" formControlName="password" name="signinObj.password"  [(ngModel)]="signinObj.password" nbInput fullWidth id="InputPasswordSignin" placeholder="Password" required>
+                                            <div class="error" *ngFor="let validation of signinMsg.password">
+                                                <p *ngIf="formSignin.get('password').hasError(validation.type) && (formSignin.get('password').dirty || formSignin.get('password').touched)">
+                                                    {{validation.message}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" nbButton status="primary" [nbSpinner]="signinLoading" nbButton status="primary" fullWidth [disabled]="formSignin.pristine || formSignin.invalid || signinLoading" fullWidth>
+                                                LOGIN
+                                            </button>
+                                        </div>
+                                        <nb-alert status="danger" closable (close)="onClose('errFirebase')" *ngIf="errFirebase">
+                                            <p>
+                                                {{errFirebase}}
+                                            </p>
+                                        </nb-alert>
+                                        <div class="form-group">
+                                            <p class="toggleCard">
+                                                You dont have account yet ?
+                                                <a (click)="toggleCard()"> 
+                                                   Register 
+                                                </a> 
+                                            </p>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </nb-card-body >
+                </nb-card>
+            </nb-card-front>
+
+            <nb-card-back>
+                <nb-card class="card-body">
+                    <nb-card-header>
+                    </nb-card-header>
+                    <nb-card-body>
+                        <div class="wrapper-login">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 class="wrapper-login-icon">
+                                        <nb-icon icon="person-add"></nb-icon>
+                                    </h5>
+                                    <div class="wrapper-login-toptext">
+                                        <h5>Register</h5>
+                                        <p>Hello! register your new account</p>
+                                    </div>
+                                    <form [formGroup]="formSignup" (ngSubmit)="signUp(formSignup)">
+                                        <div class="form-group">
+                                            <label for="InputFullName" class="label">Full Name</label>
+                                            <input type="text" formControlName="fullName" name="signupObj.fullName" [(ngModel)]="signupObj.fullName" nbInput fullWidth id="InputFullName" placeholder="Full name" required>
+                                            <div class="error" *ngFor="let validation of signupMsg.fullName">
+                                                <p *ngIf="formSignup.get('fullName').hasError(validation.type) && (formSignup.get('fullName').dirty || formSignup.get('fullName').touched)">
+                                                    {{validation.message}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="InputSelectGrade" class="label">Grades (X/XI/XII)</label>
+                                            <nb-select name="signupObj.grade" formControlName="grade" [(ngModel)]="signupObj.grade" placeholder="what highschool grade are you?" id="InputSelectGrade" fullWidth required>
+                                                <nb-option [value]="grade" *ngFor="let grade of grades">{{grade}}</nb-option>
+                                            </nb-select>
+                                            <div class="error" *ngFor="let validation of signupMsg.grade">
+                                                <p *ngIf="formSignup.get('grade').hasError(validation.type) && (formSignup.get('grade').dirty || formSignup.get('grade').touched)">
+                                                    {{validation.message}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="InputSelectSpecialization" class="label">Specialization (IPB/MIPA/IPS)</label>
+                                            <nb-select name="signupObj.specialization" formControlName="specialization" [(ngModel)]="signupObj.specialization" placeholder="what specialization are you?" id="InputSelectSpecialization" fullWidth required>
+                                                <nb-option [value]="specialization" *ngFor="let specialization of specializations">{{specialization}}</nb-option>
+                                            </nb-select>
+                                            <div class="error" *ngFor="let validation of signupMsg.specialization">
+                                                <p *ngIf="formSignup.get('specialization').hasError(validation.type) && (formSignup.get('specialization').dirty || formSignup.get('specialization').touched)">
+                                                    {{validation.message}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="InputSelectClass" class="label">Class Number (1..etc)</label>
+                                            <nb-select name="signupObj.class" formControlName="class" [(ngModel)]="signupObj.class" placeholder="what class number grade are you?" id="InputSelectClass" fullWidth required>
+                                                <nb-option [value]="class" *ngFor="let class of classes">{{class}}</nb-option>
+                                            </nb-select>
+                                            <div class="error" *ngFor="let validation of signupMsg.class">
+                                                <p *ngIf="formSignup.get('class').hasError(validation.type) && (formSignup.get('class').dirty || formSignup.get('class').touched)">
+                                                    {{validation.message}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="InputEmail" class="label">Email address</label>
+                                            <input type="email" formControlName="email" name="signupObj.email" [(ngModel)]="signupObj.email" nbInput fullWidth id="InputEmail" placeholder="Email" required>    
+                                            <div class="error" *ngFor="let validation of signupMsg.email">
+                                                <p *ngIf="formSignup.get('email').hasError(validation.type) && (formSignup.get('email').dirty || formSignup.get('email').touched)">
+                                                    {{validation.message}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="InputPassword" class="label">Password</label>
+                                            <input type="password" formControlName="password" name="signupObj.password"  [(ngModel)]="signupObj.password" nbInput fullWidth id="InputPassword" placeholder="Password" required>
+                                            <div class="error" *ngFor="let validation of signupMsg.password">
+                                                <p *ngIf="formSignup.get('password').hasError(validation.type) && (formSignup.get('password').dirty || formSignup.get('password').touched)">
+                                                    {{validation.message}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="InputConfirmPassword" class="label">Confirm Password</label>
+                                            <input type="password" formControlName="confirmPassword" name="signupObj.confirmPassword" [(ngModel)]="signupObj.confirmPassword" nbInput fullWidth id="InputConfirmPassword" placeholder="Confirm Password" required>
+                                            <div class="error" *ngFor="let validation of signupMsg.confirmPassword">
+                                                <p *ngIf="(formSignup.get('confirmPassword').hasError(validation.type) || formSignup.hasError(validation.type)) && (formSignup.get('confirmPassword').dirty || formSignup.get('confirmPassword').touched)">
+                                                    {{validation.message}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" [nbSpinner]="signupLoading" nbButton status="primary" fullWidth [disabled]="formSignup.pristine || formSignup.invalid || signupLoading">
+                                                REGISTER
+                                            </button>
+                                        </div>
+                                        <div class="form-group">
+                                            <p class="toggleCard">
+                                                Already have account ?
+                                                <a (click)="toggleCard()"> 
+                                                    Login
+                                                </a> 
+                                            </p>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </nb-card-body>
+                </nb-card>
+            </nb-card-back>
+        </nb-flip-card>
+    </nb-layout-column>
+</nb-layout>

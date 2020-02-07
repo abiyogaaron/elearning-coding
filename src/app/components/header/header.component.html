@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-4">
+        <div class="logo-container">
+            <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
+              <nb-icon icon="menu-2-outline"></nb-icon>
+            </a>
+            <a class="logo" href="#" (click)="navigateHome()">Elearning-coding</a>
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="context-menu">
+            <nb-actions size="medium">
+                <nb-action class="user-action">
+                    <nb-user 
+                        [nbContextMenu]="userMenu"
+                        [onlyPicture]="userPictureOnly"
+                        name="{{user.displayName}}"
+                        title="{{user.grade + ' ' + user.specialization + ' ' + user.class}}"
+                        nbContextMenuTag="user-menu"
+                    >
+                    </nb-user>
+                </nb-action>
+            </nb-actions>
+        </div>
+    </div>
+</div>

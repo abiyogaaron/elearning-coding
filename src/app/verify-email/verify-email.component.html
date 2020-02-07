@@ -1,0 +1,34 @@
+<nb-layout>  
+  <nb-layout-column class="colored-column-basic">
+    <nb-card >
+      <nb-card-header>
+      </nb-card-header>
+      <nb-card-body  [nbSpinner]="verifyUserLoading" nbSpinnerSize="giant" nbSpinnerStatus="primary">
+        <div class="wrapper-verify">
+          <div class="row">
+            <div class="col-12">
+              <h5 class="wrapper-verify-icon">
+                <nb-icon icon="email"></nb-icon>
+              </h5>
+              <div class="wrapper-verify-toptext">
+                <h5>Verify Email</h5>
+                <p>Hello! thankyou for your registration, we already send you an email to activate your account</p>
+                <div *ngIf="showVerifyPanel">
+                  <button type="button" nbButton status="primary" class="resendEmailBtn" (click)="sendEmailVerification()" [nbSpinner]="verifyLoading">
+                    Resend Email Verification
+                  </button>
+                  <p class="loginText">
+                    Already activated yet ?
+                    <a routerLink="/auth"> 
+                      Login now 
+                    </a> 
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>

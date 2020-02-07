@@ -1,0 +1,38 @@
+{
+  "signupMsg":{
+    "fullName":[
+      {"type": "required", "message": "Your Fullname is required"},
+      { "type": "pattern", "message": "Your Fullname must contain only letters" }
+    ],
+    "grade":[
+      {"type": "required", "message": "Please select your highschool grade first"}
+    ],
+    "specialization":[
+      {"type": "required", "message": "Please select your highschool specialization first"}
+    ],
+    "class":[
+      {"type": "required", "message": "Please select your highschool class number first"}
+    ],
+    "email":[
+      {"type": "required", "message": "Your Email Address is required"},
+      {"type": "pattern", "message": "Your Email Address is not a valid email"}
+    ],
+    "password":[
+      {"type": "required", "message": "Your Password is required"},
+      {"type": "pattern", "message": "Your password must contain 6 characters at least one Uppercase and one Number"}
+    ],
+    "confirmPassword":[
+      {"type": "required", "message": "Your Confirm password is required"},
+      {"type": "areEqual", "message": "Password and confirm password must equal" }
+    ]
+  },
+  "signinMsg":{
+    "email":[
+      {"type": "required", "message": "Your Email Address is required"},
+      {"type": "pattern", "message": "Your Email Address is not a valid email"}
+    ],
+    "password":[
+      {"type": "required", "message": "Your Password is required"}
+    ]
+  }
+}
