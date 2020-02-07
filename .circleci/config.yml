@@ -14,7 +14,6 @@ jobs:
       - run: npm install --save-dev firebase-tools
       - run: npm install --save-dev @angular/cli
       - run: npm install --save-dev tslint
-      - run: npm run buildtest
       - save_cache:
           paths:
             - node_modules
