@@ -127,7 +127,7 @@ export class AuthComponent implements OnInit {
         console.log("res signin", res);
         this.signinLoading = false;
         this.router.navigate(['home/dashboard']);
-        this.changeDetector.detectChanges();
+        // this.changeDetector.detectChanges();
       }, error => {
         console.log("error signup", error);
         this.errFirebase = error.message;
