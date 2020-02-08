@@ -24,6 +24,35 @@
         "source": "**",
         "destination": "/index.html"
       }
+    ],
+    "headers":[
+      {
+        "source": "**/*.@(jpg|jpeg|gif|png|webp|svg)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=3600000"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(eot|otf|ttf|ttc|woff)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=3600000"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(js|css)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=3600000"
+          }
+        ]
+      }
     ]
   },
   "storage": {
