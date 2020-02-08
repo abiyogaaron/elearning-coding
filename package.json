@@ -27,6 +27,7 @@
     "bootstrap": "4.4.1",
     "eva-icons": "1.1.2",
     "firebase": "7.7.0",
+    "ngx-monaco-editor": "^8.1.1",
     "ngx-skeleton-loader": "1.2.2",
     "pace-js": "1.0.2",
     "rxjs": "~6.4.0",

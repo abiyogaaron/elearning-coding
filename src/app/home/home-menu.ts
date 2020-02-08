@@ -7,9 +7,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/home/dashboard',
         home: true
     },
-    {
-        title: 'My Grades',
-        icon: 'browser-outline',
-        link: '/home/grades',
-    }
+    // {
+    //     title: 'My Grades',
+    //     icon: 'browser-outline',
+    //     link: '/home/grades',
+    // }
 ]

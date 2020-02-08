@@ -1,1 +1,23 @@
-<h1>testttttt</h1>
+<nb-card class="card-body" accent="primary">
+  <nb-card-header>
+    <div class="row">
+      <div class="col-9">
+        <h5>
+          <nb-icon icon="code-outline"></nb-icon>
+          Write your code here
+        </h5>
+      </div>
+      <div class="col-3">
+        <button type="submit" nbButton hero status="success" size="small" fullWidth>
+          <nb-icon icon="checkmark-square-2"></nb-icon>
+          Submit Solution
+        </button>
+      </div>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="code-editor">
+      <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="code" (onInit)="onInit($event)"></ngx-monaco-editor>
+    </div>
+  </nb-card-body>
+</nb-card>

@@ -31,6 +31,7 @@ import {
   NbUserModule
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 import { AuthComponent } from './auth/auth.component';
 import { AuthService} from './shared/services/auth.service';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
@@ -71,7 +72,9 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+
+    MonacoEditorModule.forRoot()
   ],
   providers: [
     AuthService

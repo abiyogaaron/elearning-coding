@@ -1,0 +1,21 @@
+@import '../../@theme/themes';
+
+.card-body{
+  nb-card-header{
+    h5{
+      font-size: 18px;
+      nb-icon{
+        font-weight: bold;
+      }
+      color: nb-theme(primary-color);
+    }
+  }
+  nb-card-body{
+    .code-editor{
+      height: 350px;
+      ngx-monaco-editor{
+        height: 100%;
+      }
+    }
+  }
+}

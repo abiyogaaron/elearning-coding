@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MonacoEditorModule } from 'ngx-monaco-editor';
 import {
   NbActionsModule,
   NbButtonModule,
@@ -25,7 +26,8 @@ import {DashboardComponent} from './dashboard.component';
         NbSelectModule,
         NbListModule,
         NbIconModule,
-        FormsModule
+        FormsModule,
+        MonacoEditorModule
     ],
     declarations: [
         DashboardComponent
