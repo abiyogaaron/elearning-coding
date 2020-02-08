@@ -4,23 +4,23 @@ jobs:
     branches:
       only:
         - master
-      docker:
-        - image: circleci/node:12
-      working_directory: ~/repo
-      steps:
-        - checkout
-        - restore_cache:
-            keys:
-              - v1-dependencies-{{ checksum "package.json" }}
-              - v1-dependencies-
-        - run: npm install
-        - run: npm install --save-dev firebase-tools
-        - run: npm install --save-dev @angular/cli
-        - run: npm install --save-dev tslint
-        - save_cache:
-            paths:
-              - node_modules
-              - dist  
-            key: v1-dependencies-{{ checksum "package.json" }}
-        - run: npm run buildprod
-        - run: './node_modules/.bin/firebase deploy --only hosting --token=$FIREBASE_TOKEN'
+    docker:
+      - image: circleci/node:12
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: npm install
+      - run: npm install --save-dev firebase-tools
+      - run: npm install --save-dev @angular/cli
+      - run: npm install --save-dev tslint
+      - save_cache:
+          paths:
+            - node_modules
+            - dist  
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: npm run buildprod
+      - run: './node_modules/.bin/firebase deploy --only hosting --token=$FIREBASE_TOKEN'
