@@ -14,9 +14,9 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
       - run: npm install
-      - run: sudo npm install -g firebase-tools
-      - run: sudo npm install -g @angular/cli
-      - run: sudo npm install -g tslint
+      - run: npm install --save-dev firebase-tools
+      - run: npm install --save-dev @angular/cli
+      - run: npm install --save-dev tslint
       - save_cache:
           paths:
             - node_modules

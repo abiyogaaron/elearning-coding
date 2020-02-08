@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from "../shared/services/auth.service";
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import valMsg from './validationMessages.json';
@@ -28,7 +28,8 @@ export class AuthComponent implements OnInit {
   constructor(
     public authService: AuthService,
     public fb: FormBuilder,
-    public router: Router
+    public router: Router,
+    public changeDetector: ChangeDetectorRef
   ){ 
     this.isCardFlipped = false;
     this.signinObj = {
@@ -126,6 +127,7 @@ export class AuthComponent implements OnInit {
         console.log("res signin", res);
         this.signinLoading = false;
         this.router.navigate(['home/dashboard']);
+        this.changeDetector.detectChanges();
       }, error => {
         console.log("error signup", error);
         this.errFirebase = error.message;
