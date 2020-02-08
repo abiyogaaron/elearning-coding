@@ -22,5 +22,5 @@ jobs:
               - node_modules
               - dist  
             key: v1-dependencies-{{ checksum "package.json" }}
-        - run: npm run build:aot
+        - run: npm run buildprod
         - run: './node_modules/.bin/firebase deploy --only hosting --token=$FIREBASE_TOKEN'
