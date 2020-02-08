@@ -20,6 +20,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
+            - dist  
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: ng build --prod --aot
       - run: './node_modules/.bin/firebase deploy --only hosting --token=$FIREBASE_TOKEN'
